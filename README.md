@@ -19,6 +19,8 @@ And launch flask:
 
 flask run --debug --port=8000
 
+Open http://127.0.0.1:8000
+
 Enter parameters (or leave at defaults)
 
 Then poke the 'submit' button.
