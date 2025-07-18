@@ -50,6 +50,7 @@ class MiningRun:
   verbose_stations: bool = False
   min_mining_hours: int = 1
   max_mining_hours: int = 5
+  slice_time: int = 5
 
   def run_minutes(self) -> int:
     """ For human readable output.
@@ -252,8 +253,8 @@ class Station():
   """
   state: StationStatus
   name: str
-  busy_minutes: int
-  idle_minutes: int
+  busy_minutes: int = 0
+  idle_minutes: int = 0
   attached_truck: Truck | None
   verbose: bool
   completed_loads: int

@@ -180,7 +180,7 @@ def test_Station():
 
   expected = ('Station Name: unnamed\n'
               'Station status: StationStatus.IDLE\n\n'
-              "Total Time in state: {'IDLE': 0, 'BUSY': 0}\n"
+              "Total Time in state: BUSY:0 IDLE:0\n"
             )
   assert f'{station}' == expected
 
@@ -206,7 +206,7 @@ def test_Station_release():
 def test_Station_generate_report():
   run = components.MiningRun(run_hours=1)
   station = components.Station(run)
-  station.time_logs['BUSY'] = 60
+  station.busy_minutes = 60
 
   expected = ('Status report for station: unnamed\n'
               'Time spent unloading. Total: 1 hours. Percent: 100\n'
