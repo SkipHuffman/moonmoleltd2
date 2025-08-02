@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .row {
+      display: flex;
+    }
+
+    /* Create two equal columns that sits next to each other */
+    .column {
+      flex: 50%;
+      padding: 10px;
+      height: 300px; /* Should be removed. Only for demonstration */
+    }
+    </style>
+    <h1>{% block title %} Define a Lunar Mining Simulation {% endblock %}</h1>
+    <form method="post">
+        <label for="num_trucks">Number of trucks</label>
+        <br>
+        <input type="number" name="num_trucks"
+               placeholder="enter number of mining trucks"
+               value="{{ request.form['num_trucks'] }}"></input>
+        <br>
+        <label for="num_stations">Number of stations</label>
+        <br>
+        <input type="number" name="num_stations"
+               placeholder="enter number of unloading stations"
+               value="{{ request.form['num_stations'] }}"></input>
+        <br>
+        <label for="run_hours">Simulation run length in hours.</label>
+	<br>
+        <input type="number" name="run_hours"
+               placeholder="enter length of run in hours"
+               value="{{ request.form['run_hours'] }}"></input>
+        <br>
+        <h2>Metrics to include</h2>
+        <label for="report_as_percent">Chart values as percentage, rather than raw numbers.</label>
+        <input type="checkbox" name="report_as_percent" id="report_as_percent" checked></input><br>
+        <div class="row">
+          <div class="column">
+            <h3>Mining Truck Metrics</h3>
+            <label for="MINING">Mining.</label>
+            <input type="checkbox" name="MINING" id="MINING" checked></input><br>
+            <label for="TRAVELING_TO_STATION">Traveling to Station.</label>
+            <input type="checkbox" name="TRAVELING_TO_STATION" id="TRAVELING_TO_STATION" checked></input><br>
+            <label for="IDLE">Idle (waiting for station).</label>
+            <input type="checkbox" name="IDLE" id="IDLE" checked></input><br>
+            <label for="UNLOADING">Unloading.</label>
+            <input type="checkbox" name="UNLOADING" id="UNLOADING" checked></input><br>
+            <label for="TRAVELING_TO_MINE">Traveling back to mine site.</label>
+            <input type="checkbox" name="TRAVELING_TO_MINE" id="TRAVELING_TO_MINE" checked></input><br>
+          </div>
+          <div class="column">
+            <h3>Unloading Station Metrics</h3>
+            <label for="BUSY">Station is Busy.</label>
+            <input type="checkbox" name="BUSY" id="BUSY" checked></input><br>
+            <label for="IDLE.1">Station is Idle.</label>
+            <input type="checkbox" name="IDLE.1" id="IDLE.1" checked></input><br>
+          </div>
+        </div> 
+
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
